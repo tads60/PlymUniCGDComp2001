@@ -19,7 +19,7 @@ namespace Comp2001Referral.Models
         {
             if(!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=socem1.uopnet.plymouth.ac.uk; databse=COMP2001_PScutter-cairns; User ID=PScutter-cairns; Password=XtoQ494+");
+                optionsBuilder.UseSqlServer("Server=socem1.uopnet.plymouth.ac.uk; database=COMP2001_PScutterCairns; User ID=PScutterCairns; Password=XtoQ494+");
             }
         }
 
