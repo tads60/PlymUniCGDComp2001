@@ -49,7 +49,7 @@ namespace Comp2001Referral.Models
                 entity.Property(e => e.orderNumber).ValueGeneratedNever().HasColumnName("OrderNumber");
                 entity.Property(e => e.customerID).IsRequired().IsUnicode(false);
                 entity.Property(e => e.totalAmount).IsRequired().IsUnicode(false);
-                entity.Property(e => e.date).IsRequired().IsUnicode(false);
+                entity.Property(e => e.dateOrdered).IsRequired().IsUnicode(false);
                 entity.Property(e => e.dispatched).IsRequired().IsUnicode(false);
             });
 
@@ -92,13 +92,13 @@ namespace Comp2001Referral.Models
             parameter.Direction = System.Data.ParameterDirection.Output;
             parameter.Size = 50;
             Database.ExecuteSqlRaw("EXEC Register @IDNumber, @Title, @FirstName, @LastName, @PhoneNumber",
-            new SqlParameter("@IDNumber", Customers.IDNumber),
-            new SqlParameter("@Title", Customers.title),
-            new SqlParameter("@FirstName", Customers.firstName),
-            new SqlParameter("@LastName", Customers.lastName),
-            new SqlParameter("@PhoneNumber", Customers.phoneNumber),
-            parameter );
-            output = parameter.Value.ToString();
+                new SqlParameter("@IDNumber", Customers.IDNumber),
+                new SqlParameter("@Title", Customers.title),
+                new SqlParameter("@FirstName", Customers.firstName),
+                new SqlParameter("@LastName", Customers.lastName),
+                new SqlParameter("@PhoneNumber", Customers.phoneNumber),
+                parameter);
+                output = parameter.Value.ToString();
         }
 
         //check if the new customer exists
@@ -126,7 +126,8 @@ namespace Comp2001Referral.Models
 
         public void UpdateCustomer(customers Customers)
         {
-            Database.ExecuteSqlRaw("EXEC UpdateCustomer @Title, @FirstName, @LastName, @PhoneNumber",
+            Database.ExecuteSqlRaw("EXEC UpdateCustomer @IDNumber, @Title, @FirstName, @LastName, @PhoneNumber",
+            new SqlParameter("@IDNumber", Customers.IDNumber),
             new SqlParameter("@Title", Customers.title),
             new SqlParameter("@FirstName", Customers.firstName),
             new SqlParameter("@LastName", Customers.lastName),

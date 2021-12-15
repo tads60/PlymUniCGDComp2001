@@ -21,7 +21,7 @@ namespace Comp2001Referral.Models
             get; set;
         }
 
-        public DateTime date
+        public DateTime dateOrdered
         {
             get; set;
         }
